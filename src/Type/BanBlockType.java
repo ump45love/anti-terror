@@ -21,6 +21,14 @@ public class BanBlockType {
 		this.number = number;
 	}
 	
+	public String getBanBlockName() {
+		return m.name();
+	}
+	
+	public int getExp() {
+		return number;
+	}
+	
 	 @Override
 		public boolean equals(Object object) {
 		 BanBlockType product = (BanBlockType) object;

@@ -2,6 +2,8 @@ package Main;
 
 
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,6 +20,11 @@ import Event.*;
 public class main extends JavaPlugin{
 	@Override
 	public void onEnable(){
+		File cfile = new File(getDataFolder(),"config.yml");
+		if(cfile.length() == 0) {
+			getConfig().options().copyDefaults(true);
+			saveConfig();
+		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
 		getServer().getPluginManager().registerEvents(new BlockEvent(),this);
 		getCommand("banblock").setTabCompleter(new TabComplete());
