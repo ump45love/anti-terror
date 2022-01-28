@@ -1,0 +1,7 @@
+author: ump45
+commands: 
+  banblock: 
+    description: "banBlock"
+main: Main.main
+name: banBlock
+version: "1.0.0"

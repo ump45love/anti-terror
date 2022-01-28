@@ -17,9 +17,8 @@ public class BlockEvent implements Listener {
 	 @EventHandler
 	    public void onItemPlace(BlockPlaceEvent e){
 	       Player player = e.getPlayer();
-	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBlock().getType(),player.getExp())))
+	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBlock().getType(),player.getExpToLevel())))
 	    	   e.setCancelled(true);
-	      
 	    }
    
 }

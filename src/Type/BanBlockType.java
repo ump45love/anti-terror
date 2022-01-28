@@ -5,18 +5,18 @@ import org.bukkit.Material;
 
 public class BanBlockType {
 	Material m;
-	float number;
+	int number;
 	
 	public BanBlockType(){
 		m = null;
 		number = 0;
 	}
-	public BanBlockType(String name,float number){
+	public BanBlockType(String name,int number){
 		this.m =Material.getMaterial(name);
 		this.number = number;
 	}
 	
-	public BanBlockType(Material m,float number){
+	public BanBlockType(Material m,int number){
 		this.m =m;
 		this.number = number;
 	}
