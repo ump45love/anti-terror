@@ -7,12 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.bukkit.Material;
+
 import Type.*;
 public class FileManager {
 	static public String dir = "./plugins/banBlock/banBlockList.txt";
-	void writeFile() throws IOException {
+	public static void writeFile() throws IOException {
 		File file = new File(dir);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file,false));
 		BanBlock.banBlock.forEach(item -> {
 			try {
 				write(item,writer);
@@ -24,18 +26,18 @@ public class FileManager {
 		writer.close();
 	}
 	
-	void write(BanBlockType banBlock,BufferedWriter writer) throws IOException {
+	static void write(BanBlockType banBlock,BufferedWriter writer) throws IOException {
 		writer.write(banBlock.getBanBlockName()+":"+banBlock.getExp()+"\n");
 	}
 	
-	void readFile() {
+	public static void readFile() {
 		File file = new File(dir);
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 		    String line;
 		    while ((line = br.readLine()) != null) {
 		    	String[] content = line.split(":");
-		    	int exp = Integer.parseInt(content[1]);
-		    	BanBlock.insertBanBlock(content[0],exp);
+		   	 if(content[1].matches("[+-]?\\d*(\\.\\d+)?") && (Material.getMaterial(content[0]) != null))
+		    	BanBlock.insertBanBlock(content[0],content[1],null);
 		    }
 		} catch (IOException e) {
 		    e.printStackTrace();

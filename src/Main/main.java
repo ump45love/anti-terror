@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import Event.*;
+import File.FileManager;
 
 
 
@@ -26,6 +27,7 @@ public class main extends JavaPlugin{
 			saveConfig();
 		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
+		FileManager.readFile();
 		getServer().getPluginManager().registerEvents(new BlockEvent(),this);
 		getCommand("banblock").setTabCompleter(new TabComplete());
 		getCommand("banblock").setExecutor(new getcommand());

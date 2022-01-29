@@ -29,12 +29,17 @@ public class BanBlockType {
 		return number;
 	}
 	
+	public void setExp(int exp) {
+		number = exp;
+	}
 	 @Override
 		public boolean equals(Object object) {
 		 BanBlockType product = (BanBlockType) object;
-			if ((product.m == this.m) && (this.number <= product.number)) {
+			if ((product.m.getId() == this.m.getId()) && (this.number <= product.number)) {
 			return true;
 			}
 			return false;
 			}
+	 
+	 
 }
