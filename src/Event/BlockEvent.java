@@ -29,7 +29,7 @@ public class BlockEvent implements Listener {
 	       Player player = e.getPlayer();
 	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBucket(),player.getTotalExperience()))) {
 	    	   e.setCancelled(true);
-	       	   BanBlock.expLimit((new BanBlockType(e.getBlock().getType(),0)),player);
+	       	   BanBlock.expLimit((new BanBlockType(e.getBucket(),0)),player);
 	       }
 	    }
    
