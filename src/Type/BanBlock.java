@@ -54,7 +54,7 @@ public class BanBlock {
  
  public static void expLimit(BanBlockType data,Player player) {
 	 int index = banBlock.indexOf(data);
-	 player.sendMessage(ChatColor.RED +"당신의 누적경험치:" + player.getTotalExperience() +"요구 누적경험치:" +banBlock.get(index).getExp());
+	 player.sendMessage(ChatColor.RED +"당신의 누적경험치:" + player.getTotalExperience() +" 요구 누적경험치:" +banBlock.get(index).getExp());
 	 banBlock.indexOf(data);
  }
  public static void setBanBlock(String name,String number,Player player) throws IOException {
