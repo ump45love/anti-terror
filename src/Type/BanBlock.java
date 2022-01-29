@@ -51,6 +51,12 @@ public class BanBlock {
 	 banBlock.remove(index);
 	 FileManager.writeFile();
  }
+ 
+ public static void expLimit(BanBlockType data,Player player) {
+	 int index = banBlock.indexOf(data);
+	 player.sendMessage(ChatColor.RED +"당신의 누적경험치:" + player.getTotalExperience() +"요구 누적경험치:" +banBlock.get(index).getExp());
+	 banBlock.indexOf(data);
+ }
  public static void setBanBlock(String name,String number,Player player) throws IOException {
 	 if(!number.matches("[+-]?\\d*(\\.\\d+)?")) {
 		 player.sendMessage(ChatColor.RED + "숫자를 입력해주세요");

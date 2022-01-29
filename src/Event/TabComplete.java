@@ -45,6 +45,7 @@ public class TabComplete implements TabCompleter{
         		result.add("list");
         		result.add("delete");
         		result.add("set");
+        		result.add("help");
         		return result;
         	}
             else {

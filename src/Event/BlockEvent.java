@@ -18,15 +18,19 @@ public class BlockEvent implements Listener {
 	 @EventHandler
 	    public void onItemPlace(BlockPlaceEvent e){
 	       Player player = e.getPlayer();
-	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBlock().getType(),player.getExpToLevel())))
+	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBlock().getType(),player.getTotalExperience()))) {
 	    	   e.setCancelled(true);
+	    	   BanBlock.expLimit((new BanBlockType(e.getBlock().getType(),0)),player);
+	       }
 	    }
 	 
 	 @EventHandler
 	    public void onItemPlace(PlayerBucketEmptyEvent e){
 	       Player player = e.getPlayer();
-	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBucket(),player.getExpToLevel())))
+	       if(BanBlock.checkBanBlock(new BanBlockType(e.getBucket(),player.getTotalExperience()))) {
 	    	   e.setCancelled(true);
+	       	   BanBlock.expLimit((new BanBlockType(e.getBlock().getType(),0)),player);
+	       }
 	    }
    
 }

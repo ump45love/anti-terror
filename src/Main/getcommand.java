@@ -15,7 +15,6 @@ public class getcommand implements CommandExecutor {
 	    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 		  Player player = (Player)sender;
 		  if(checkLength(args.length,1)) {
-			  errorMessage("오류1",player);
 			  return false;
 		  }
 		  if(player.isOp()) {
@@ -23,14 +22,12 @@ public class getcommand implements CommandExecutor {
 				  switch (args[0]) {
 				  case "insert":
 					  if(checkLength(args.length,3)) {
-						  errorMessage("오류2",player);
 						  return false;
 					  }
 					  BanBlock.insertBanBlock(args[1], args[2],player);
 					  break;
 				  case "delete":
 					  if(checkLength(args.length,2)) {
-						  errorMessage("오류3",player);
 						  return false;
 					  }
 					  BanBlock.deleteBanBlock(args[1],player);
@@ -40,10 +37,12 @@ public class getcommand implements CommandExecutor {
 					  break;
 				  case "set":
 					  if(checkLength(args.length,3)) {
-						  errorMessage("오류4",player);
 						  return false;
 					  }
 					  BanBlock.setBanBlock(args[1], args[2],player);
+					  break;
+				  case "help":
+					  helpMssage(player);
 					  break;
 				  }
 			  }
@@ -55,7 +54,14 @@ public class getcommand implements CommandExecutor {
 		  
 		  return false;
 	   }
-	  
+	  void helpMssage(Player player) {
+		  player.sendMessage(ChatColor.BLUE+ "block_name - 설치제한할 블럭이름");
+		  player.sendMessage(ChatColor.BLUE+ "exp limit - 설치가 허가될 누적 경험치량");
+		  player.sendMessage(ChatColor.BLUE+ "/banblock insert [block_name] [exp limit] - 블럭추가");
+		  player.sendMessage(ChatColor.BLUE+ "/banblock delete [block_name] - 블럭삭제");
+		  player.sendMessage(ChatColor.BLUE+ "/banblock list - 블럭리스트");
+		  player.sendMessage(ChatColor.BLUE+ "/banblock set [block_name] [exp limit] - 블럭 경험치 요구량 수정");
+	  }
 	  boolean checkLength(int length,int chk) {
 		  if(chk <= length)
 			  return false;
